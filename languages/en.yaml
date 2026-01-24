@@ -1,0 +1,33 @@
+PLUGIN_MCP:
+  # Tabs
+  TAB_GENERAL: General
+  TAB_SECURITY: Security
+  TAB_LOGGING: Logging
+
+  # General tab
+  PLUGIN_STATUS: Plugin Status
+  MCP_ENDPOINT_ROUTE: MCP Endpoint Route
+  MCP_ENDPOINT_ROUTE_HELP: URL path for the MCP server endpoint
+  BLOG_ROUTE: Blog Route
+  BLOG_ROUTE_HELP: Path to blog posts in /user/pages/
+  DEFAULT_POST_TEMPLATE: Default Post Template
+  DEFAULT_POST_TEMPLATE_HELP: Template name for new posts (without .md)
+  ALLOWED_LANGUAGES: Allowed Languages
+  ALLOWED_LANGUAGES_HELP: Languages available for content and translations
+
+  # Security tab
+  ENABLE_RATE_LIMITING: Enable Rate Limiting
+  MAX_REQUESTS: Max Requests
+  MAX_REQUESTS_HELP: Maximum requests per time window
+  TIME_WINDOW: Time Window (seconds)
+  TIME_WINDOW_HELP: Time window for rate limiting in seconds
+  ALLOWED_IPS: Allowed IPs
+  ALLOWED_IPS_HELP: Leave empty to allow all IPs
+
+  # Logging tab
+  ENABLE_LOGGING: Enable Logging
+  LOG_LEVEL: Log Level
+  LOG_LEVEL_DEBUG: Debug
+  LOG_LEVEL_INFO: Info
+  LOG_LEVEL_WARNING: Warning
+  LOG_LEVEL_ERROR: Error only

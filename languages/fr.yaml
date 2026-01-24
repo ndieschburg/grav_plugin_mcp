@@ -1,0 +1,33 @@
+PLUGIN_MCP:
+  # Onglets
+  TAB_GENERAL: Général
+  TAB_SECURITY: Sécurité
+  TAB_LOGGING: Journalisation
+
+  # Onglet Général
+  PLUGIN_STATUS: Statut du plugin
+  MCP_ENDPOINT_ROUTE: Route de l'endpoint MCP
+  MCP_ENDPOINT_ROUTE_HELP: Chemin URL pour l'endpoint du serveur MCP
+  BLOG_ROUTE: Route du blog
+  BLOG_ROUTE_HELP: Chemin vers les articles dans /user/pages/
+  DEFAULT_POST_TEMPLATE: Template par défaut des posts
+  DEFAULT_POST_TEMPLATE_HELP: Nom du template pour les nouveaux posts (sans .md)
+  ALLOWED_LANGUAGES: Langues autorisées
+  ALLOWED_LANGUAGES_HELP: Langues disponibles pour le contenu et les traductions
+
+  # Onglet Sécurité
+  ENABLE_RATE_LIMITING: Activer la limitation de débit
+  MAX_REQUESTS: Requêtes maximum
+  MAX_REQUESTS_HELP: Nombre maximum de requêtes par fenêtre de temps
+  TIME_WINDOW: Fenêtre de temps (secondes)
+  TIME_WINDOW_HELP: Fenêtre de temps pour la limitation en secondes
+  ALLOWED_IPS: IPs autorisées
+  ALLOWED_IPS_HELP: Laisser vide pour autoriser toutes les IPs
+
+  # Onglet Journalisation
+  ENABLE_LOGGING: Activer les logs
+  LOG_LEVEL: Niveau de log
+  LOG_LEVEL_DEBUG: Debug
+  LOG_LEVEL_INFO: Info
+  LOG_LEVEL_WARNING: Avertissement
+  LOG_LEVEL_ERROR: Erreurs uniquement

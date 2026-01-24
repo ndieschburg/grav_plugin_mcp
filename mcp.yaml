@@ -1,0 +1,28 @@
+enabled: true
+
+# MCP endpoint route
+route: /mcp
+
+# Allowed languages for translations
+allowed_languages:
+  - fr
+  - en
+  - es
+
+# Blog route in /user/pages/
+blog_route: /blog
+
+# Default template for new posts
+default_template: item
+
+# Security settings
+security:
+  rate_limit:
+    enabled: true
+    max_requests: 100
+    window_seconds: 60
+
+# Logging
+logging:
+  enabled: true
+  level: info

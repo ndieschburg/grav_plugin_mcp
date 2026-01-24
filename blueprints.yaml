@@ -1,0 +1,129 @@
+name: MCP Server
+slug: mcp
+type: plugin
+version: 1.0.0
+description: "Expose your Grav blog via Model Context Protocol for AI assistants like Claude"
+icon: plug
+author:
+  name: "Noel Dieschburg"
+  email: "noel.dieschburg@gmail.com"
+  url: "https://trucs.hophop.be"
+homepage: "https://github.com/ndieschburg/grav_plugin_mcp"
+keywords: grav, plugin, mcp, ai, claude, anthropic, model-context-protocol
+bugs: "https://github.com/ndieschburg/grav_plugin_mcp/issues"
+docs: "https://github.com/ndieschburg/grav_plugin_mcp/blob/main/README.md"
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.7.0' }
+
+form:
+  validation: loose
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        general:
+          type: tab
+          title: PLUGIN_MCP.TAB_GENERAL
+          fields:
+            enabled:
+              type: toggle
+              label: PLUGIN_MCP.PLUGIN_STATUS
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+
+            route:
+              type: text
+              label: PLUGIN_MCP.MCP_ENDPOINT_ROUTE
+              default: /mcp
+              help: PLUGIN_MCP.MCP_ENDPOINT_ROUTE_HELP
+              validate:
+                required: true
+
+            blog_route:
+              type: text
+              label: PLUGIN_MCP.BLOG_ROUTE
+              default: /blog
+              help: PLUGIN_MCP.BLOG_ROUTE_HELP
+
+            default_template:
+              type: text
+              label: PLUGIN_MCP.DEFAULT_POST_TEMPLATE
+              default: item
+              help: PLUGIN_MCP.DEFAULT_POST_TEMPLATE_HELP
+
+            allowed_languages:
+              type: selectize
+              label: PLUGIN_MCP.ALLOWED_LANGUAGES
+              help: PLUGIN_MCP.ALLOWED_LANGUAGES_HELP
+              validate:
+                type: commalist
+              classes: fancy
+              selectize:
+                create: true
+
+        security:
+          type: tab
+          title: PLUGIN_MCP.TAB_SECURITY
+          fields:
+            security.rate_limit.enabled:
+              type: toggle
+              label: PLUGIN_MCP.ENABLE_RATE_LIMITING
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+
+            security.rate_limit.max_requests:
+              type: number
+              label: PLUGIN_MCP.MAX_REQUESTS
+              default: 100
+              help: PLUGIN_MCP.MAX_REQUESTS_HELP
+              validate:
+                min: 10
+                max: 10000
+
+            security.rate_limit.window_seconds:
+              type: number
+              label: PLUGIN_MCP.TIME_WINDOW
+              default: 60
+              help: PLUGIN_MCP.TIME_WINDOW_HELP
+              validate:
+                min: 10
+                max: 3600
+
+            security.allowed_ips:
+              type: array
+              label: PLUGIN_MCP.ALLOWED_IPS
+              help: PLUGIN_MCP.ALLOWED_IPS_HELP
+              placeholder_key: null
+              placeholder_value: "IP address"
+
+        logging:
+          type: tab
+          title: PLUGIN_MCP.TAB_LOGGING
+          fields:
+            logging.enabled:
+              type: toggle
+              label: PLUGIN_MCP.ENABLE_LOGGING
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+
+            logging.level:
+              type: select
+              label: PLUGIN_MCP.LOG_LEVEL
+              default: info
+              options:
+                debug: PLUGIN_MCP.LOG_LEVEL_DEBUG
+                info: PLUGIN_MCP.LOG_LEVEL_INFO
+                warning: PLUGIN_MCP.LOG_LEVEL_WARNING
+                error: PLUGIN_MCP.LOG_LEVEL_ERROR

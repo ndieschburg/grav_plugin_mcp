@@ -176,8 +176,8 @@ class McpToolsRegistrar
                 ]
             );
 
-            // Only register webmention tool if fediverse-feed plugin is enabled
-            if ($this->grav['config']->get('plugins.fediverse-feed.enabled', false)) {
+            // Only register webmention tool if bridgyfed plugin is enabled
+            if ($this->grav['config']->get('plugins.bridgyfed.enabled', false)) {
                 $tools[] = $this->createTool(
                     'send_webmention',
                     'Send a webmention to Bridgy Fed to publish a post on Fediverse',
@@ -449,14 +449,14 @@ class McpToolsRegistrar
     }
 
     /**
-     * Handle send_webmention - check if fediverse-feed plugin is enabled
+     * Handle send_webmention - check if bridgyfed plugin is enabled
      */
     protected function handleSendWebmention(array $args): array
     {
-        if (!$this->grav['config']->get('plugins.fediverse-feed.enabled', false)) {
+        if (!$this->grav['config']->get('plugins.bridgyfed.enabled', false)) {
             return [
                 'success' => false,
-                'error' => ['code' => 'PLUGIN_NOT_ENABLED', 'message' => 'fediverse-feed plugin is not enabled']
+                'error' => ['code' => 'PLUGIN_NOT_ENABLED', 'message' => 'bridgyfed plugin is not enabled']
             ];
         }
 

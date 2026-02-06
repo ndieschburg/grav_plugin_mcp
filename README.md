@@ -321,7 +321,7 @@ curl -X POST "https://yourblog.com/mcp/upload" \
 }
 ```
 
-**Permission required**: `media:write`
+**Permission required**: `write`
 
 ---
 

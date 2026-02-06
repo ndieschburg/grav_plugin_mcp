@@ -304,12 +304,12 @@ class McpController
             return;
         }
 
-        // Check permissions
-        if (!in_array('media:write', $authResult['permissions'])) {
+        // Check permissions (write permission allows media upload)
+        if (!in_array('write', $authResult['permissions'])) {
             http_response_code(403);
             echo json_encode([
                 'success' => false,
-                'error' => ['code' => 'FORBIDDEN', 'message' => 'Missing media:write permission']
+                'error' => ['code' => 'FORBIDDEN', 'message' => 'Missing write permission']
             ]);
             return;
         }

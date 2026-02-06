@@ -268,6 +268,63 @@ Upload a media file (image, PDF, etc.) to a post's folder.
 
 ---
 
+### Direct Upload REST Endpoint
+
+The standard MCP protocol requires SSE sessions, which can be problematic for some tools (like Claude Code CLI). A direct REST endpoint is available for media uploads:
+
+#### `POST /mcp/upload`
+
+Direct file upload without MCP session. Useful for CLI tools and scripts.
+
+**Endpoint**: `POST https://yourblog.com/mcp/upload`
+
+**Authentication**: Bearer token (same as MCP)
+
+**Formats accepted**:
+
+##### Option 1: multipart/form-data (recommended for large files)
+
+```bash
+curl -X POST "https://yourblog.com/mcp/upload" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "slug=my-post" \
+  -F "file=@/path/to/image.png" \
+  -F "overwrite=false"
+```
+
+##### Option 2: application/json (base64)
+
+```bash
+curl -X POST "https://yourblog.com/mcp/upload" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "slug": "my-post",
+    "filename": "image.png",
+    "content_base64": "iVBORw0KGgo...",
+    "overwrite": false
+  }'
+```
+
+**Response**:
+```json
+{
+  "success": true,
+  "data": {
+    "filename": "image.png",
+    "path": "user/pages/01.blog/my-post/image.png",
+    "size": 12345,
+    "type": "image/png",
+    "markdown_image": "![image.png](image.png)",
+    "markdown_link": "[image.png](image.png)"
+  }
+}
+```
+
+**Permission required**: `media:write`
+
+---
+
 #### `delete_media`
 Delete a media file from a post.
 

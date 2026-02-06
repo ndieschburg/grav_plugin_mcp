@@ -63,6 +63,14 @@ class McpPlugin extends Plugin
         $route = $this->config->get('plugins.mcp.route', '/mcp');
         $uri = $this->grav['uri'];
 
+        // Direct upload endpoint (REST API without MCP session)
+        if ($uri->path() === $route . '/upload') {
+            $controller = new \Grav\Plugin\Mcp\McpController($this->grav);
+            $controller->handleDirectUpload();
+            exit;
+        }
+
+        // Main MCP endpoint
         if ($uri->path() === $route) {
             $controller = new \Grav\Plugin\Mcp\McpController($this->grav);
             $controller->handle();
